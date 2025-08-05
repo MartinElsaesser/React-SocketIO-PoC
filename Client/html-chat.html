@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Select your Chat App</title>
+		<title>React-Socket.IO Chat App</title>
 		<link
 			href="https://cdn.jsdelivr.net/npm/beercss@3.11.33/dist/cdn/beer.min.css"
 			rel="stylesheet"
@@ -19,16 +19,7 @@
 		></script>
 	</head>
 	<body>
-		<main class="responsive">
-			<h2>Chat Apps</h2>
-			<ul>
-				<li>
-					<a class="link" href="/react-chat">React Chat App</a>
-				</li>
-				<li>
-					<a class="link" href="/html-chat">HTML Chat App</a>
-				</li>
-			</ul>
-		</main>
+		<div id="root"></div>
+		<script type="module" src="/src/htmlChat/main.ts"></script>
 	</body>
 </html>

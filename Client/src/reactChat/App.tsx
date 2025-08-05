@@ -1,7 +1,7 @@
 import { useState, useSyncExternalStore } from "react";
 import "./App.css";
-import { chatStore } from "./stores/chatStore";
-import { type ChatMessage } from "./types";
+import { chatStore } from "../stores/chatStore";
+import { type ChatMessage } from "../types";
 
 function App() {
 	const [messageInput, setMessageInput] = useState("Hello there everyone.");
