@@ -1,7 +1,8 @@
 import { io, Socket } from "socket.io-client";
 import { create } from "mutative";
-import type { ClientToServerEvents, ServerToClientEvents } from "../../Server/server";
-import type { ChatState } from "./types";
+import type { ClientToServerEvents, ServerToClientEvents } from "../../../Server/server";
+import type { ChatState } from "../types";
+// this store was copied from: https://react.dev/reference/react/useSyncExternalStore
 
 const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io("ws://localhost:3000");
 
@@ -39,14 +40,15 @@ export const chatStore = {
 		});
 	},
 
-	// implementation details
 	subscribe(listener: () => void) {
+		// called when the state of the store changes
 		listeners = [...listeners, listener];
 		return () => {
 			listeners = listeners.filter(l => l !== listener);
 		};
 	},
 	getSnapshot() {
+		// returns the current state of the store
 		return chatState;
 	},
 };
