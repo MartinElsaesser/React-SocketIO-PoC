@@ -4,7 +4,7 @@ import { chatStore } from "./store";
 import { type ChatMessage } from "./types";
 
 function App() {
-	const [messageInput, setMessageInput] = useState("hello from Linus");
+	const [messageInput, setMessageInput] = useState("Hello there everyone.");
 	const { chatMessages, username } = useSyncExternalStore(
 		chatStore.subscribe,
 		chatStore.getSnapshot
@@ -16,18 +16,25 @@ function App() {
 				<nav>
 					<h6 className="max">Chat</h6>
 					<div className="field label border small">
-						<input type="text" value={username} />
+						<input type="text" value={username} readOnly />
 						<label>Username</label>
 					</div>
 				</nav>
 			</header>
 			<main className="responsive no-scroll">
-				{chatMessages.map(chatMessage =>
+				{chatMessages.map((chatMessage, idx) =>
 					chatMessage.username === username ?
-						<MyMessage message={chatMessage.message} username={chatMessage.username} />
-					:	<TheirMessage message={chatMessage.message} username={chatMessage.username} />
+						<MyMessage
+							message={chatMessage.message}
+							username={chatMessage.username}
+							key={idx}
+						/>
+					:	<TheirMessage
+							message={chatMessage.message}
+							username={chatMessage.username}
+							key={idx}
+						/>
 				)}
-				<div style={{ height: 7000 }}></div>
 			</main>
 			<footer className="fill fixed">
 				<nav>
@@ -42,6 +49,10 @@ function App() {
 					<button
 						className="circle extra"
 						onClick={() => {
+							if (messageInput.length === 0) {
+								alert("Input a message first.");
+								return;
+							}
 							chatStore.addMessage({
 								message: messageInput,
 							});
