@@ -19,7 +19,27 @@
 		></script>
 	</head>
 	<body>
-		<div id="root"></div>
+		<header class="fill fixed">
+			<nav>
+				<h6 class="max">Chat</h6>
+				<div class="field label border small">
+					<input type="text" id="usernameInput" disabled />
+					<label>Username</label>
+				</div>
+			</nav>
+		</header>
+		<main class="responsive no-scroll"></main>
+		<footer class="fill fixed">
+			<nav>
+				<div class="field label border max">
+					<input type="text" id="messageInput" />
+					<label>Enter new message</label>
+				</div>
+				<button class="circle extra" id="sendMessage">
+					<i>send</i>
+				</button>
+			</nav>
+		</footer>
 		<script type="module" src="/src/htmlChat/main.ts"></script>
 	</body>
 </html>
