@@ -14,7 +14,7 @@ function App() {
 		<>
 			<header className="fill fixed">
 				<nav>
-					<h6 className="max">Chat</h6>
+					<h6 className="max">React Chat</h6>
 					<div className="field label border small">
 						<input type="text" value={username} readOnly />
 						<label>Username</label>
